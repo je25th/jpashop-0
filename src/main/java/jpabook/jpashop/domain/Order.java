@@ -15,7 +15,12 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")//매핑
+    //JoinColumn 안쓰면 조인 테이블 방식이 사용돼서 중간 테이블이 생성됨
     private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
