@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Book;
 
 import javax.persistence.EntityManager;
@@ -17,6 +18,9 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();//트랜젝션 시작
 
+        Address address = new Address("1", "2", "3");
+        Address address2 = new Address("1", "2", "3");
+
         try {
 
             Book book = new Book();
@@ -31,5 +35,6 @@ public class JpaMain {
         }
 
         emf.close();
+        System.out.println("test : " + (address.equals(address2)));
     }
 }
